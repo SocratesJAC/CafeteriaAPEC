@@ -1,51 +1,58 @@
-class Menu:
-    def __init__(self):
-        self.options = {
-            1: self.manage_usuarios,
-            2: self.manage_campus,
-            3: self.manage_cafeterias,
-            4: self.manage_proveedores,
-            0: self.exit
-        }
+# menu_principal.py
 
-    def display_menu(self):
+import Cafeteria
+import Campus
+import TipoUsuario
+import Proveedores
+import GestionMarca
+import GestionUsuarios 
+import GestionArticulos
+import GestionEmpleados
+import VentaArticulo
+import ConsultaCriterio
+import GenerarReporte
+
+def main():
+    while True:
         print("\n=================================")
         print(" Bienvenido a la Cafeteria!")
         print("=================================\n")
-        print("Seleccione una opción:")
-        print("1. Tipo de Usuarios")
-        print("2. Campus")
-        print("3. Cafeterías")
-        print("4. Proveedores")
-        print("0. Salir")
+        print("Selecciona una opción:")
+        print("1. Gestionar cafeterías")
+        print("2. Gestionar campus")
+        print("3. Gestionar usuarios")
+        print("4. Gestionar proveedores")
+        print("5. Gestionar marcas")
+        print("6. Gestionar ventas")
+        print("7. Salir")
 
-    def run(self):
-        while True:
-            self.display_menu()
-            option = int(input("Opción: "))
-            if option in self.options:
-                self.options[option]()
-            elif option == 0:
-                self.exit()
-                break
-            else:
-                print("Opción inválida, por favor seleccione otra opción.")
+        opcion = input("Ingrese una opción (1-7): ")
 
-    def manage_usuarios(self):
-        print("Gestión de Tipos de Usuarios")
-
-    def manage_campus(self):
-        print("Gestión de Campus")
-
-    def manage_cafeterias(self):
-        print("Gestión de Cafeterías")
-
-    def manage_proveedores(self):
-        print("Gestión de Proveedores")
-
-    def exit(self):
-        print("¡Hasta luego!")
+        if opcion == "1":
+            Cafeteria.main()
+        elif opcion == "2":
+            Campus.main()
+        elif opcion == "3":
+            TipoUsuario.obtener_estado()
+        elif opcion == "4":
+            Proveedores.main()
+        elif opcion == "5":
+            GestionMarca.opcion()
+        elif opcion == "6":
+            GestionUsuarios.sistema_usuarios()    
+        elif opcion == "7":
+            GestionArticulos.opcion()
+        elif opcion == "8":
+            GestionEmpleados.opcion()
+        elif opcion == "9":
+            GestionMarca.main_marcas()
+        elif opcion == "10":
+            VentaArticulo.main_ventas()
+        elif opcion == "0":
+            print("¡Hasta luego!")
+            break
+        else:
+            print("Opción inválida. Intente de nuevo.")
 
 if __name__ == "__main__":
-    menu = Menu()
-    menu.run()
+    main()
